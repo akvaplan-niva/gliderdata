@@ -38,48 +38,10 @@ Linux users might want to use [Blobfuse] and simply mount the blob container as 
 The script wraps `azcopy sync` and uploads all directories under a local root directory.
 Before uploading, SHA256 checksums are calculated for all files and stored in `shasum.txt` inside each sub-directory.
 
-Copy the script to your local root folder and configure by editing `.env` as explained below.
+Copy the script to your local root folder and configure by editing `.env` as explained in the [configuration](../env-config.md) documentation.
 
 Uploading your local changes by running:
 
 ```sh
 ./gliderdata_sync_up
-```
-
-## Configuration
-
-Azure configuration information should be stored in environmental variables.
-
-### Linux/bash
-
-Add the following to your (eg.) `.bashrc` or to a `.env` file in your local sync root:
-
-```bash
-export GLIDERDATA="https://gliderdata.blob.core.windows.net"
-export GLIDERDATA_CONTAINER=""
-export GLIDERDATA_SAS=""
-```
-
-Check your bash env configuration by running:
-
-```bash
-  env | grep GLIDERDATA
-  azcopy list "$GLIDERDATA/$GLIDERDATA_CONTAINER/?$GLIDERDATA_SAS"
-```
-
-### PowerShell
-
-Add to `$PROFILE.CurrentUserAllHosts`:
-
-```pwsh
-$env:GLIDERDATA="https://gliderdata.blob.core.windows.net"
-$env:GLIDERDATA_CONTAINER=""
-$env:GLIDERDATA_SAS=""
-```
-
-Check your PS \$env configuration with:
-
-```pwsh
-dir Env:/GLIDERDATA*
-azcopy list "$env:GLIDERDATA/$env:GLIDERDATA_CONTAINER/?$env:GLIDERDATA_SAS"
 ```
