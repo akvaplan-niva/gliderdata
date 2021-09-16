@@ -29,7 +29,7 @@ Linux users might want to use [Blobfuse] and simply mount the blob container as 
 
 ### Upload script using azcopy sync
 
-A generic upload script for providers running linux is provided here: [gliderdata_sync_up](blob/main/azure/provider/gliderdata_sync_up).
+A generic upload script for providers running linux is provided here: [gliderdata_sync_up](https://github.com/akvaplan-niva/gliderdata/blob/main/azure/provider/gliderdata_sync_up).
 
 Copy the script to your local root folder and edit `.env` as explained below.
 
