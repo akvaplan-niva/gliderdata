@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
+# gliderdata_sync_up:
+#
 # This script uploads all directories under a local root to the Azure blob storage account "gliderdata"
 
 # The script loops child directories of . and creates SHA256 checksums of all files inside each, before running
 # azcopy sync $root "$base/$container/?$sas" --put-md5
-
+#
 # This script will read configuration from a local ".env" file if present
 
-# The following env variables should be defined:
+# The following env variables must be defined:
 # export GLIDERDATA="https://gliderdata.blob.core.windows.net"
-# export GLIDERDATA_CONTAINER=$AZURE_STORAGE_CONTAINER
-# export GLIDERDATA_SAS=$AZURE_STORAGE_SAS_TOKEN
+# export GLIDERDATA_CONTAINER=""
+# export GLIDERDATA_SAS=$""
+#
+# azcopy installtion instructions:
+# https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
 
 dotenv=".env"
 if [ -f "$dotenv" ]; then
