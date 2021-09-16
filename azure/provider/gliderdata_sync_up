@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# This script uploads all directories under a local root to the Azure blob storage account "gliderdata"
+
+# The script loops child directories of . and creates SHA256 checksums of all files inside each, before running
+# azcopy sync $root "$base/$container/?$sas" --put-md5
+
+# This script will read configuration from a local ".env" file if present
+
+# The following env variables should be defined:
+# export GLIDERDATA="https://gliderdata.blob.core.windows.net"
+# export GLIDERDATA_CONTAINER=$AZURE_STORAGE_CONTAINER
+# export GLIDERDATA_SAS=$AZURE_STORAGE_SAS_TOKEN
+
+dotenv=".env"
+if [ -f "$dotenv" ]; then
+  source $dotenv
+  # if .env file is without export, ie. key=value,
+  # replace source line with:
+  # export $(grep -v '^#' $dotenv | xargs)
+fi
+
+check_command () {
+  local cmd=$1
+  if ! command -v $cmd &> /dev/null
+  then
+    echo "$cmd is not installed or on current path" 1>&2
+    exit 1
+  fi
+}
+
+check_env () {
+  local env=$1
+  if [[ -z `printenv $env` ]]; then
+    echo "Must set env variable $env" 1>&2
+    exit 1
+  fi
+}
+
+check_dir () {
+  local dir=$1
+  if [[ ! -d $dir ]]; then
+    echo "Nonexisting directory: $dir" 1>&2
+    exit 1
+  fi
+}
+
+subdir_shasum () {
+  local dir=$1
+  local shasumfile=shasum.txt
+  local present=`pwd`
+  cd $dir
+  find . -type f ! -iname $shasumfile -print0 | xargs -0 sha256sum > $shasumfile
+  cat $shasumfile | grep -v $shasumfile
+  cd $present > /dev/null
+}
+
+gliderdata_sync_up () {
+  check_env "GLIDERDATA"
+  check_env "GLIDERDATA_CONTAINER"
+  check_env "GLIDERDATA_SAS"
+
+  local root=$1
+  local base=$GLIDERDATA
+  local container=$GLIDERDATA_CONTAINER
+  local sas=$GLIDERDATA_SAS
+  local present=`pwd`
+
+  check_command azcopy
+  check_dir $root
+
+  echo "Syncing up `realpath $root` to $base/$container"
+  echo "$base/$container/?$sas"
+
+  cd $root
+  find . -path './[^.]*' -prune -type d -print0 | while read -d $'\0' dir
+  do
+    echo "* `basename $dir`"
+    subdir_shasum $dir
+    echo ""
+  done
+  cd $present > /dev/null
+  echo "=> $base/$container"
+  azcopy sync $root "$base/$container/?$sas" --put-md5
+  echo "Sync done"
+}
+
+gliderdata_local_root="."
+gliderdata_sync_up $gliderdata_local_root
