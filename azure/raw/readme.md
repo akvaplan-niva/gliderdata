@@ -6,7 +6,7 @@ Akvaplan-niva stores unprocessed glider data in [Azure blob storage][azure-blob]
 
 ## Azure configuration
 
-See [../env-config] for how to configure your local machine for accessing `gliderdata`.
+See [env-config] for how to configure your local machine for accessing `gliderdata`.
 
 Contact [Akvaplan-niva's data engineer](mailto:che) to get a a ccess token that provides you with read-only access rights.
 
@@ -31,6 +31,7 @@ Users on all computing platforms (Linux, MacOS, Windows) can use the [azcopy] co
 
 Linux users might want to use [Blobfuse] and simply mount the blob container as a virtual file system (see [guide][blobfuse-azure]).
 
+[env-config]: ../env-config.md
 [azure-blob]: https://azure.microsoft.com/en-us/services/storage/blobs
 [azcopy]: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
