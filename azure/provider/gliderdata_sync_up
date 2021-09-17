@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# gliderdata_sync_up:
+# gliderdata_sync_up
 #
-# This script uploads all directories under a local root to the Azure blob storage account "gliderdata"
-
+# Uploads all directories under a local root to the Azure blob storage account "gliderdata"
 # The script loops child directories of . and creates SHA256 checksums of all files inside each, before running
 # azcopy sync $root "$base/$container/?$sas" --put-md5
 #
@@ -11,11 +10,15 @@
 # The following env variables must be defined:
 # export GLIDERDATA="https://gliderdata.blob.core.windows.net"
 # export GLIDERDATA_CONTAINER=""
-# export GLIDERDATA_SAS=$""
+# export GLIDERDATA_SAS=""
 #
-# azcopy installtion instructions:
+# azcopy installation instructions:
 # https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
-
+#
+# Git repo:       https://github.com/akvaplan-niva/gliderdata
+# Latest version: https://github.com/akvaplan-niva/gliderdata/blob/main/azure/provider/gliderdata_sync_up
+# License:        https://opensource.org/licenses/MIT
+# Modified:       2021-09-17
 dotenv=".env"
 if [ -f "$dotenv" ]; then
   source $dotenv
