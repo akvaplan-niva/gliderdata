@@ -19,6 +19,7 @@ base=$(basename "$xcd")
 xba="${2:-"${xcd%cd}ba"}"
 
 cache=$SLOCUM_CAC_CACHE
+echo "SLOCUM_CAC_CACHE:$cache"
 tmpdir=$(mktemp -d)
 
 # Uncompress
@@ -32,10 +33,12 @@ tmp_renamed="$tmpfile"
 
 # Create XBA
 tmpxba="${tmp_renamed%cd}ba"
+echo "dbd2asc -c $cache $tmp_renamed > $tmpxba"
 if ! dbd2asc -c "$cache" "$tmp_renamed" > "$tmpxba"; then
   exit $?
 fi
 mv "$tmpxba" "$xba"
+wc -l $xba
 
 # Cleanup
 [[ -d "$tmpdir" ]] && rm -f "$tmpdir/*"

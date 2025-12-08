@@ -24,15 +24,19 @@ The pipeline
 
 ## Installation
 
+Watcher/pipeline:
+
 ```bash
+sudo su - localuser
 git clone https://github.com/akvaplan-niva/gliderdata
-cd gliderdata
-sudo cp slocum*.bash /usr/local/bin/
+cd gliderdata && gliderdata=$(pwd)
+sudo ln -s $gliderdata/slocum/realtime/*.bash /usr/local/bin
+touch $gliderdata/slocum/realtime/.env
 ```
 
 ## Configuration
 
-### Global
+Global
 
 ```bash
 # RTD API
@@ -44,7 +48,7 @@ export RTD_API_KEY_CREATE="…"
 export SLOCUM_CAC_CACHE="…"
 ```
 
-### Project and mission
+Project and mission
 
 Project and mission metadata must be updated prior to each launch, in order to
 isolate and archive data locally, and in blob storage.
@@ -61,7 +65,10 @@ mkdir -p /srv/akvaplan-open/jellysafe/2025-12-05
 # Configure active project/mission
 export RTD_PROJECT="jellysafe"
 export RTD_PROJECT_ACCESS="open" # open | restricted
-export RTD_PROJECT_DIR="/srv/akvaplan-open/jellysafe/2025-12-05"
+#RTD_PROJECT_DIR
+#RTD_MISSION_ISODATE="2025-12-05"
+export RTD_MISSION_DIR="/srv/akvaplan-open/jellysafe/2025-12-05"
+#RTD_MISSION_BLOB
 ```
 
 # Blob storage
