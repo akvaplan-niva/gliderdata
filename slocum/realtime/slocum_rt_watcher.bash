@@ -11,7 +11,6 @@
 # Links on inotify
 # https://github.com/inotify-tools/inotify-tools/wiki
 # https://developer.ibm.com/tutorials/l-inotify/ 
-set -euo pipefail
 
 watch_dir="${1:-"/var/opt/gmc/gliders"}"
 mission_dir="${2:-${RTD_MISSION_DIR:-}}"
