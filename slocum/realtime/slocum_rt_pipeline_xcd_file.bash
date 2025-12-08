@@ -29,7 +29,6 @@ xcd2xba="$here/slocum_xcd2xba.bash"
 [[ ! -x "$xcd2xba" ]] && { echo "ERROR missing: $xcd2xba"; exit 1; }
 
 $xcd2xba "$xcd" "$rt_xba_dir/$xba"
-wc -l "$rt_xba_dir/$xba"
 
 # 3. POST XBA to RTD
 if [ -s "$rt_xba_dir/$xba" ]; then

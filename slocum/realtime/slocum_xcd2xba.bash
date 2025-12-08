@@ -33,12 +33,11 @@ tmp_renamed="$tmpfile"
 
 # Create XBA
 tmpxba="${tmp_renamed%cd}ba"
-echo "dbd2asc -c $cache $tmp_renamed > $tmpxba"
+echo "dbd2asc -c $cache $tmp_renamed > $tmpxba [$xba]"
 if ! dbd2asc -c "$cache" "$tmp_renamed" > "$tmpxba"; then
   exit $?
 fi
 mv "$tmpxba" "$xba"
-wc -l $xba
 
 # Cleanup
-[[ -d "$tmpdir" ]] && rm -f "$tmpdir/*"
+# [[ -d "$tmpdir" ]] && rm -f "$tmpdir/*"
