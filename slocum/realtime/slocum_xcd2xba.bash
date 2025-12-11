@@ -1,43 +1,59 @@
 #!/bin/bash
-# slocum_xcd2xba.bash
-# Converts a compressed dinkum binary Slocum file into DBD ASCII
-#
-# Env: SLOCUM_CAC_CACHE must point to a folder with relevant `.cac` files
+# slocum_xcd2xba.bash [-c dir] <xcd-file> <xba-filename>
+# Converts a compressed dinkum binary (XCD) into DBD ASCII
 #
 # Requirements
 # * compexp
 # * dbd2asc
 #
-# Useful documentation on Slocum file formats prior to compressed binary: 
+# Like `dbd2asc`, .cac directory must be provided in using -c <dir> 
+# or via env $SLOCUM_CAC_CACHE
+#
+# Useful documentation on Slocum file formats (prior to compressed binary): 
 # https://github.com/kerfoot/slocum-utils/blob/master/doco/dbd_file_format.txt
 set -euo pipefail
 
+help="Usage: $0 [-c cache-dir] <xcd-file> [xba-file]"
+
+while getopts "hc:" opt; do
+  case $opt in
+    c) cache="$OPTARG" ;;
+    h) echo $help && exit ;;
+    *) exit 1 ;;
+  esac
+done
+shift $((OPTIND-1))
+
 xcd="${1:-}"
-[[ -z "$xcd" || ! -f "$xcd" ]] && { echo "Usage:\n\n$0 <xcd> [xba]"; exit 1; }
+[[ -z "$xcd" || ! -f "$xcd" ]] && { echo $help; exit 1; }
 
 base=$(basename "$xcd")
 xba="${2:-"${xcd%cd}ba"}"
 
-cache=$SLOCUM_CAC_CACHE
-echo "SLOCUM_CAC_CACHE:$cache"
-tmpdir=$(mktemp -d)
-
 # Uncompress
-tmpfile="$tmpdir/$base"
-compexp x "$xcd" "$tmpfile"
+tmp_dir=$(mktemp -d)
+tmp_dinkum_file="$tmp_dir/$base"
+# echo "compexp x $xcd $tmp_dinkum_file"
+compexp x "$xcd" "$tmp_dinkum_file"
 
-# (Rename)
-# Rename (expand 8x3 filename, eg. "07950000.tcd" => "apn_936-2025-336-4-0.tcd")
-# tmp_renamed=$(rename_dbd_files "$tmpfile")
-tmp_renamed="$tmpfile"
+# Find .cac
+# cac_crc=$(head -n20 /tmp/tmp.TTxNSp17pM/02490000.scd | sed -n '1,20s/.*sensor_list_crc:[[:space:]]*//p; 20q')
+# cac="$cac_crc.cac"
+
+cache="${cache:-${SLOCUM_CAC_CACHE:-}}"
+[ ! -d "$cache" ] && { echo "Slocum .cac cache dir ($cache) missing or empty"; exit 1; }
 
 # Create XBA
-tmpxba="${tmp_renamed%cd}ba"
-echo "dbd2asc -c $cache $tmp_renamed > $tmpxba [$xba]"
-if ! dbd2asc -c "$cache" "$tmp_renamed" > "$tmpxba"; then
-  exit $?
+tmpxba="${tmp_dinkum_file%cd}ba"
+# echo "dbd2asc -c $cache $tmp_dinkum_file > $tmpxba [$xba]"
+dbd2asc -c "$cache" "$tmp_dinkum_file" > "$tmpxba"
+
+# Save XBA …or send to std out
+if [[ -n "${2:-}" ]]; then
+  [[ -f "$tmpxba" ]] && mv -f "$tmpxba" "$xba"
+else
+  [[ -f "$tmpxba" ]] && cat "$tmpxba"
 fi
-mv "$tmpxba" "$xba"
 
 # Cleanup
-# [[ -d "$tmpdir" ]] && rm -f "$tmpdir/*"
+[[ -d "$tmp_dir" ]] && rm -f "$tmp_dir/*"
