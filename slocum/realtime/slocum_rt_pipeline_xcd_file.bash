@@ -13,8 +13,8 @@ mission_blob="${4:-${RTD_MISSION_BLOB:-}}"
 xcdbase="$( basename $xcd)"
 xba="${xcdbase%cd}ba"
 
-rt_xcd_dir="$mission_dir/$glider_id/rt_dinkum_cbinary"
-rt_xba_dir="$mission_dir/$glider_id/rt_dinkum_ascii"
+rt_xcd_dir="$mission_dir/slocum/$glider_id/rt_dinkum_cbinary"
+rt_xba_dir="$mission_dir/slocum/$glider_id/rt_dinkum_ascii"
 
 echo "[$(date -Is)] Slocum RT file pipeline: $glider_id $xcdbase"
 echo "[$(date -Is)] Slocum RT cbinary: $rt_xcd_dir"
