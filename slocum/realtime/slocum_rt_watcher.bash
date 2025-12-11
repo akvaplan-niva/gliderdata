@@ -5,7 +5,8 @@
 # https://github.com/akvaplan-niva/gliderdata/blob/main/slocum/realtime/readme.md
 #
 # Requirements
-# * inotifywait # apt install inotify-tools
+# * inotifywait # apt install inotify-tools.
+# * slocum_rt_pipeline_xcd_file.bash
 #
 # Links on inotify
 # https://github.com/inotify-tools/inotify-tools/wiki
@@ -28,6 +29,7 @@ slocum_rt_pipeline="$here/slocum_rt_pipeline_xcd_file.bash"
 # echo "[$(date -Is)] Slocum RT watcher active for $watch_dir"
 # echo "[$(date -Is)] Mission dir: $mission_dir"
 # echo "[$(date -Is)] Mission blob: $mission_blob"
+
 inotifywait -m -r "$watch_dir" \
   --quiet \
   --timeout 600 \

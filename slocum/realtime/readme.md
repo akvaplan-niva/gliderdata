@@ -23,7 +23,7 @@ The pipeline
 
 ## Installation
 
-Watcher, pipeline and ascii-convertor:
+Watcher, pipeline and ascii-converter:
 
 ```bash
 sudo su - localuser

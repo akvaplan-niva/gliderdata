@@ -9,7 +9,7 @@
 # Like `dbd2asc`, .cac directory must be provided in using -c <dir> 
 # or via env $SLOCUM_CAC_CACHE
 #
-# Useful documentation on Slocum file formats (prior to compressed binary): 
+# Useful documentation on Slocum file formats (prior to compressed binary):
 # https://github.com/kerfoot/slocum-utils/blob/master/doco/dbd_file_format.txt
 set -euo pipefail
 
@@ -37,9 +37,7 @@ tmp_dinkum_file="$tmp_dir/$base"
 compexp x "$xcd" "$tmp_dinkum_file"
 
 # Find .cac
-# cac_crc=$(head -n20 /tmp/tmp.TTxNSp17pM/02490000.scd | sed -n '1,20s/.*sensor_list_crc:[[:space:]]*//p; 20q')
-# cac="$cac_crc.cac"
-
+# $ head -n20 2025-12-10_test/apn_936/rt_xcd/080* | strings -s ' ' | grep _list_crc
 cache="${cache:-${SLOCUM_CAC_CACHE:-}}"
 [ ! -d "$cache" ] && { echo "Slocum .cac cache dir ($cache) missing or empty"; exit 1; }
 

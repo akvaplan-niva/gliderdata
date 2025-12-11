@@ -1,5 +1,9 @@
 #!/bin/bash
 # Slocum RT file pipeline for a single compressed dinkum binary (XCD)
+#
+# Requirements
+# * slocum_xcd2xba.bash
+# * rclone
 set -euo pipefail
 glider_id=$1
 xcd=$2 # full path of xcd
@@ -32,14 +36,14 @@ $xcd2xba "$xcd" "$rt_xba_dir/$xba"
 
 # 3. Send dinkum ascii (XBA) to RTD and blob storage
 if [ -s "$rt_xba_dir/$xba" ]; then
-  # ->RTD
+  # -> RTD
   url="https://rtd.akvaplan.no/slocum/xba"
   echo "[$(date -Is)] POST $url <- $xba"
-  curl -s -u "akvaplan:$RTD_API_KEY_CREATE" \
+  curl -s -u "$RTD_API_USER:$RTD_API_KEY_CREATE" \
     --data-binary @"$rt_xba_dir/$xba" \
     -H "content-type: text/plain" \
     "$url"
-  # ->Blob
+  # -> Blob
 
 fi
 
