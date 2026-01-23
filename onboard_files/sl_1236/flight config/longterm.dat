@@ -1,0 +1,30 @@
+# longterm.dat
+#    List of sensors who retain their value accross power cycles
+#
+m_avg_climb_rate
+m_avg_upward_inflection_time
+m_tot_num_inflections
+m_tot_num_thermal_valve_cmd
+m_tot_horz_dist
+m_lat
+m_lon
+m_tot_ballast_pumped_energy
+m_battery
+m_iridium_call_num
+m_iridium_dialed_num
+m_coulomb_amphr_total
+m_coulomb_watt_hr_total
+m_weight_drop
+s_water_depth_avg
+s_water_depth_delta
+s_water_depth_wavelength
+f_ocean_pressure_min
+m_avg_speed
+x_last_wpt_lat
+x_last_wpt_lon
+x_hover_ballast_shallow
+x_hover_ballast_deep
+x_hover_depth_shallow
+x_hover_depth_deep
+m_pump_effective_num_cycles
+

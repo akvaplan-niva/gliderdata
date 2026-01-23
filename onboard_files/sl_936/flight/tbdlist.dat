@@ -1,0 +1,31 @@
+# tbdlist.dat
+# A small subset of a dbd file intended to be transmitted in real time.
+#
+# 2009-10-06 fnj@omegatech.hatchescreek.com  Initial. DRH: only send CTD, DO, WL 24 sec, time, generic for UVP6
+#
+SCI_M_PRESENT_TIME
+SCI_M_PRESENT_SECS_INTO_MISSION
+SCI_WATER_COND 24
+SCI_WATER_TEMP 24
+SCI_WATER_PRESSURE 24
+sci_generic_c
+#sci_flbbcd_chlor_units
+#sci_flbbcd_bb_units
+#sci_flbbcd_cdom_units
+sci_flbbcd_chlor_sig 24
+sci_flbbcd_bb_sig 24
+sci_flbbcd_cdom_sig 24
+# sci_flbbcd_chlor_ref
+# sci_flbbcd_bb_ref
+# sci_flbbcd_cdom_ref
+# sci_flbbcd_therm
+# sci_fl2UrRh_uran_units
+# sci_fl2UrRh_rhod_units
+# sci_fl2UrRh_uran_sig
+# sci_fl2UrRh_rhod_sig
+# sci_fl2UrRh_uran_ref
+# sci_fl2UrRh_rhod_ref
+# sci_fl2UrRh_temp
+SCI_OXY4_OXYGEN 24
+# SCI_OXY4_SATURATION
+# SCI_OXY4_TEMP

@@ -1,0 +1,16 @@
+# config/dellog.dat
+#
+# Specifies directories and filespecs to delete when disk space
+# becomes too low.
+#
+# NOTE: Use Unix style path separators ('/', not '\').
+#
+
+c:/sentlogs/*.nlg
+c:/sentlogs/*.ebd
+c:/sentlogs/*.nbd
+c:/sentlogs/*.tbd
+c:/logs/*.nlg
+c:/logs/*.ebd
+c:/logs/*.nbd
+c:/logs/*.tbd

@@ -1,0 +1,263 @@
+###############
+## MBD NOC V1 adapted from rutgers modified by ben.allsup@noc.ac.uk    ##
+## 07-11-2022 alexander.cerra@noc.ac.uk : added variables to match current that are missing from sbdlist and updates intervals based of that
+# 										: c_climb_target_depth, c_dive_target_depth added to flight sensors
+#										: m_num_half_yos_in_segment added to flight sensors
+#										: c_wpt_lat, c_wpt_lon, added to flight sensors
+###############
+
+# --------------------------------------------------------------------------------
+# SENSOR NAME         INTERVAL         STATE         HALFYOS         YO_DUTY_CYCLE
+# (Defaults)             0               15             -1                -1
+# --------------------------------------------------------------------------------
+
+##################
+# TIME VARIABLES #
+##################
+m_present_time
+m_present_secs_into_mission
+
+#################
+# GLIDER STATUS #
+#################
+m_gps_lat
+m_gps_lon
+m_lat 							60		15	2 
+m_lon 							60		15	2 
+m_x_lmc
+m_y_lmc
+x_lmc_xy_source
+c_wpt_x_lmc
+c_wpt_y_lmc
+m_gps_full_status
+m_gps_status
+m_gps_mag_var
+m_depth_rate
+m_depth_rate_avg_final
+m_speed							60		15	2
+m_avg_speed
+cc_final_depth_state_mode
+m_depth_state
+x_cycle_overrun_in_ms
+u_low_power_cycle_time
+x_low_power_status
+c_iridium_on
+c_gps_on
+m_why_started
+m_free_heap
+sci_m_free_heap
+x_hardware_ver
+x_software_ver
+x_critical_abort_active
+u_expect_ice_near_surface
+u_always_cop_tickle_hardware
+x_stuck_depth
+u_low_power_cycle_time
+x_calc_water_vel
+m_stable_comms
+m_device_oddity
+m_device_warning
+m_device_error
+m_tot_ballast_pumped_energy
+m_comms_tickle_timestamp
+
+#############
+# ACTUATORS #
+#############
+c_ballast_pumped
+m_ballast_pumped
+m_is_ballast_pump_moving
+m_is_battpos_moving
+m_is_de_pump_moving
+c_battpos
+m_battpos
+c_fin
+m_fin
+c_air_pump
+m_air_pump
+x_fin_max
+
+# DE Pump Variables
+c_de_oil_vol
+m_de_oil_vol
+m_is_de_pump_moving
+m_thermal_valve
+
+# Thruster
+c_thruster_on
+m_thruster_current
+m_thruster_voltage
+m_thruster_power
+m_thruster_power_spike
+x_thruster_state
+x_clothesline_state
+m_console_cd
+x_are_simulating
+x_science_logging_state
+m_disk_usage
+sci_m_disk_usage
+x_disk_files_removed
+sci_x_disk_files_removed
+
+##################
+# FLIGHT SENSORS #
+##################
+m_pitch
+c_pitch
+m_roll
+c_pitch
+c_wpt_lon 						3600	15	2 
+c_wpt_lat 						3600	15	2 
+c_heading 						3600	15	2
+m_heading						300 	15 	2 
+m_depth							30		15	2
+m_pressure
+m_pressure_voltage
+u_angle_of_attack
+f_ocean_pressure_min
+f_ocean_pressure_max
+x_yo_active
+x_surface_active
+x_climb_surface
+c_speed_ctrl
+c_climb_target_depth 			3600 	15	2 
+c_dive_target_depth 			3600 	15	2 
+m_num_half_yos_in_segment 		3600	15	2 
+
+# Altimeter
+c_alt_time
+u_alt_filter_enabled
+u_alt_reduced_usage_mode
+m_water_depth
+m_altitude						60	15	2
+m_raw_altitude
+m_altimeter_voltage
+m_altimeter_status
+m_aground_water_depth
+u_alt_min_depth
+u_min_altimeter
+u_max_altimeter
+
+# Ejection weight
+c_weight_drop
+m_weight_drop
+x_hardware_cop_timeout
+
+
+######################
+# INTERNAL VARIABLES #
+######################
+m_battery_inst
+m_vacuum
+m_leakdetect_voltage
+m_leakdetect_voltage_forward
+m_digifin_leakdetect_reading
+m_vehicle_temp
+m_vacuum_change_since_air_pump_on
+m_vacuum_air_bag_inflated
+m_air_pump
+m_air_fill
+
+#########################
+# SCIENCE CONTROL (SDL) #
+#########################
+x_science_logging_state
+u_sci_cycle_time
+c_science_send_all
+
+
+#####################
+# COULOMB VARIABLES #
+#####################
+m_coulomb_amphr					3600 	15 	2
+m_coulomb_current				3600 	15 	2
+m_coulomb_amphr_total			1800 	15 	2
+m_bms_aft_current
+m_bms_pitch_current
+m_bms_ebay_current
+
+
+##################
+# FIN/HEADING AP #
+##################
+m_hdg_error
+m_hdg_ierror
+m_hdg_derror
+u_hd_fin_ap_gain
+u_hd_fin_ap_igain
+u_hd_fin_ap_dgain
+u_low_power_hd_fin_ap_gain
+u_low_power_hd_fin_ap_igain
+u_low_power_hd_fin_ap_dgain
+u_use_current_correction
+u_hd_fin_ap_inflection_holdoff
+u_heading_deadband
+u_heading_rate_deadband
+f_fin_offset
+x_fin_deadband
+
+
+############
+# PITCH AP #
+############
+m_pitch_error
+m_pitch_derror
+u_pitch_max_delta_battpos
+u_pitch_ap_gain
+u_pitch_ap_dgain
+u_pitch_ap_gain_thruster
+u_pitch_ap_dgain_thruster
+x_pitch_ap_gain
+x_pitch_ap_dgain
+x_pitch_ap_period
+u_use_pitch_servo_memory
+x_battpos_achieved
+
+
+# <sensor_name> [<interval>] [<state>] [<halfyos>] [<yo_duty_cycle>]
+#
+#   <sensor_name> specifies that the sensor be stored in the *.sbd file
+#
+#                 Default    sensor value is only stored when....
+#
+#   <interval>       0      There have been this many secs since
+#                            the last value was stored.  0 means
+#                            store every value.
+#
+#    <state>         15      A code representing what the glider
+#                            is doing: dive/hove/climb/surface
+#                            Data only stored when glider is doing
+#                            what is specified. 15 is always store.
+#                            See Argument Details for more info.
+#
+#    <halfyos>       -1      For this many dive/climbs in this
+#                            segment, e.g. since last surfacing.
+#                            -1 means stored for all dive/climbs
+#                            See Argument Details for more info.
+#
+#   <yo_duty_cycle>  -1      Only stores data every n"th" yo in this
+#                            segment, i.e. would cause data from
+#                            every 10th dive&climb to be stored.
+#                            <= 1 means every dive&climb.
+#
+# State Values:
+#
+#      0  none
+#      1  diving
+#      2  hovering
+#      3  diving|hovering
+#      4  climbing
+#      5  diving|climbing
+#      6  hovering|climbing
+#      7  diving|hovering|climbing
+#      8  on_surface
+#      9  diving|on_surface
+#      10 hovering|on_surface
+#      11 diving|hovering|on_surface
+#      12 climbing|on_surface
+#      13 diving|climbing|on_surface
+#      14 hovering|climbing|on_surface
+#      15 diving|hovering|climbing|on_surface
+
+
+

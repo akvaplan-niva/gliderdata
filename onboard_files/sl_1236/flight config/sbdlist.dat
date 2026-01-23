@@ -1,0 +1,69 @@
+# Written by load_data.c::save_sensors_to_file()
+# Sat Nov  5 20:11:22 2011
+# 26-11-2025 EAB
+
+### mandatory time information at full resolution
+m_present_secs_into_mission
+m_present_time
+
+######### vertical navigation information
+m_depth 30
+m_altitude 60
+m_speed 60
+
+######### horizontal navigation information
+c_wpt_lon 3600
+c_wpt_lat 3600
+c_heading 3600
+
+### observed GPS position
+m_gps_lon 120
+m_gps_lat 120
+
+
+### estimated currents
+m_final_water_vx 3600
+m_final_water_vy 3600
+
+### Lead detects
+m_leakdetect_voltage  120
+m_leakdetect_voltage_forward  120
+m_leakdetect_voltage_science  120
+m_digifin_leakdetect_reading 1800
+
+### observed pump/piston volume
+m_ballast_pumped  300
+c_ballast_pumped 300
+
+#m_water_vx
+#m_water_vy      
+#m_de_oil_vol    60
+#c_de_oil_vol    60
+                
+m_heading 300
+m_pitch  300
+m_roll   600
+
+### instantaneous battery voltage
+m_battery  600
+
+#observed battery position
+m_battpos  300
+
+### integrated current flow
+m_coulomb_amphr_total 3600 
+m_coulomb_current 1800
+
+#thruster
+#m_thruster_current 600
+c_thruster_on 600
+#m_thruster_voltage 600
+m_thruster_power 600
+
+#sensor on
+c_extctl_on  1800
+#c_ek80_on	1800
+
+#current monitoring
+m_bms_aft_current  10
+m_bms_pitch_current  10

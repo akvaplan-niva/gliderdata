@@ -1,0 +1,4 @@
+# highdens.dat
+#    List of sensors to be classified as "high density", which allows for
+#    multiple sbd/dbd logs per cycle.
+#

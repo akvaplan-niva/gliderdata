@@ -1,0 +1,91 @@
+# proglets.dat for PLD_BAY 1451
+#
+# Date		e-mail address			comment
+# 08-17-2021	aritterbush@teledyne.com        initial setting	  				
+#
+# Science Software Ver. 10.04
+#
+# RBR			SN 207693
+# FLBBCD                SN 6791
+# FL2SLC                SN 6826
+# Optode                SN 956
+# Jasco Observer        SN OBS-1002
+#Changed UVP6 proglets for tests
+#------------------------------------------------------------------------
+# RBR logger CTD sensor, baud rate 9600
+#
+ proglet = rbrctd
+     uart       = j0         # connector
+     bit        = 0          # power control for sensor
+     start_snsr = c_profile_on(sec)
+#
+#------------------------------------------------------------------------
+# Wet Labs flbbcd fluorometer, scattering meter, and cdom sensor, baud rate 19200
+# NOTE: This proglet requires the following sensor specific constants from
+#       Wet Labs for deriving engineering units (put in autoexec.mi):
+#         u_flbbcd_chlor_cwo(nodim)      # clean water dark offset, nodim == counts
+#         u_flbbcd_bb_cwo(nodim)         # clean water dark offset, nodim == counts
+#         u_flbbcd_cdom_cwo(nodim)       # clean water dark offset, nodim == counts
+#         u_flbbcd_chlor_sf(ug/l/nodim)  # scale factor to get units
+#         u_flbbcd_bb_sf(Mnodim)         # scale factor to get units
+#         u_flbbcd_cdom_sf(ppb/nodim)    # scale factor to get units
+#         u_flbbcd_is_calibrated(bool) 1 # set to 1 after entering 
+#                                        # calibration constants
+#
+# For simulator, set u_wetlabs_sim_num_eng_units(nodim) to 3 in autoexec.mi
+#
+ proglet = flbbcd
+     uart       = J3          # U4Soem Pins T-2,R-4  (we only use receive)
+     bit        = 0          # power, battery
+     start_snsr = c_flbbcd_on(sec)
+     simulator = wetlabs_sim
+#
+#------------------------------------------------------------------------
+# Wet Labs fl2UrRh Uranine and Rhodamine sensor, baud rate 19200
+# NOTE: This proglet requires the following sensor specific constants from
+#       Wet Labs for deriving engineering units (put in autoexec.mi):
+#         u_fl2UrRh_uran_do(nodim)            # dark offset, nodim == counts
+#         u_fl2UrRh_rhod_do(nodim)            # dark offset, nodim == counts
+#         u_fl2UrRh_uran_sf(ppb/count/nodim)  # scale factor to get units
+#         u_fl2UrRh_rhod_sf(ppb/count/nodim)  # scale factor to get units
+#         u_fl2UrRh_is_calibrated(bool) 1     # set to 1 after entering 
+#                                             # calibration constants
+#
+# For simulator, set u_wetlabs_sim_num_eng_units(nodim) to 2 in autoexec.mi
+#
+## proglet = fl2UrRh
+##     uart       = j4         # connector
+##     bit        = 0          # power control for sensor
+##     start_snsr = c_fl2UrRh_on(sec)
+##     simulator = wetlabs_sim
+#
+#------------------------------------------------------------------------
+# Aanderaa Oxygen Optode 4330F or 4841
+# NOTE: This proglet requires the following input sensor (put in autoexec.mi):
+#       u_oxy4_slow_surface_mode(bool) 1 (default for 4330F), 0 for 4841 model
+#
+ proglet = oxy4
+     uart       = J1         # U4Soem Pins T-2,R-3 
+     bit        = 2          # 8.8v
+     start_snsr = c_oxy4_on(sec)
+#------------------------------------------------------------------------
+# Jasco Observer Hydrophone sensor, baud rate 38400
+#
+#  proglet = obsvr
+#     uart       = j2         # U4Soem Pins T-2,R-4
+#     bit        = 0          # power control for sensor
+#     start_snsr = c_obsvr_on(sec)
+#
+#------------------------------------------------------------------------
+# SIMRAD WBT EK80 echosounder, Wide Band Transceiver EK80, baud rate 38400
+#
+# proglet = ek80
+#    uart       = j6         # connector
+#    bit        = 1          # power control for sensor, 15v regulated
+#    start_snsr = c_ek80_on(sec)
+#
+#------------------------------------------------------------------------
+ proglet = extctl
+     uart       = J5         # U4Soem Pins T-2,R-3/ J5 for Smart Cable, J1 for Optode tests
+	 bit        = 1			 # for optode tests, remove for normal operation
+	 start_snsr = c_extctl_on(sec)
