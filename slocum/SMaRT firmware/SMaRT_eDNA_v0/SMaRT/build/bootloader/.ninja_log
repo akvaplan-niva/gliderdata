@@ -1,7 +1,0 @@
-# ninja log v5
-1	21	1764066915696736989	CMakeFiles/boot_stage2.dir/home/glider/zephyrproject/modules/hal/rpi_pico/src/rp2040/boot_stage2/boot2_w25q080.S.obj	a997a04627c849e6
-21	60	1764066915733007748	boot_stage2	ca1a87edd707375a
-21	60	1764066915733007748	boot_stage2.bin	ca1a87edd707375a
-21	60	1764066915733007748	boot_stage2.S	ca1a87edd707375a
-21	60	1764066915733007748	/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT/build/bootloader/boot_stage2.bin	ca1a87edd707375a
-21	60	1764066915733007748	/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT/build/bootloader/boot_stage2.S	ca1a87edd707375a

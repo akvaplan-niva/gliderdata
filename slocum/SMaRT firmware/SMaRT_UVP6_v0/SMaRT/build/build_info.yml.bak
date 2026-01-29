@@ -1,4 +1,0 @@
-west:
-  command: /home/glider/zephyrproject/.venv/bin/west build -b rpi_pico . -p always
-  topdir: /home/glider/zephyrproject
-  version: 1.5.0
