@@ -1,0 +1,61 @@
+cmake:
+  application:
+    configuration-dir: '/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT'
+    source-dir: '/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT'
+  board:
+    name: 'rpi_pico'
+    path:
+     - '/home/glider/zephyrproject/zephyr/boards/raspberrypi/rpi_pico'
+    qualifiers: 'rp2040'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/glider/zephyrproject/zephyr/dts/bindings'
+    files:
+     - '/home/glider/zephyrproject/zephyr/boards/raspberrypi/rpi_pico/rpi_pico.dts'
+     - '/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT/boards/rpi_pico.overlay'
+    include-dirs:
+     - '/home/glider/zephyrproject/modules/hal/ambiq/dts'
+     - '/home/glider/zephyrproject/modules/hal/atmel/include'
+     - '/home/glider/zephyrproject/modules/hal/bouffalolab/include'
+     - '/home/glider/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - '/home/glider/zephyrproject/modules/hal/gigadevice/include'
+     - '/home/glider/zephyrproject/modules/hal/microchip/include'
+     - '/home/glider/zephyrproject/modules/hal/microchip/dts'
+     - '/home/glider/zephyrproject/modules/hal/nuvoton/dts'
+     - '/home/glider/zephyrproject/modules/hal/nxp/dts'
+     - '/home/glider/zephyrproject/modules/hal/stm32/dts'
+     - '/home/glider/zephyrproject/modules/hal/ti/dts'
+     - '/home/glider/zephyrproject/zephyr/include'
+     - '/home/glider/zephyrproject/zephyr/include/zephyr'
+     - '/home/glider/zephyrproject/zephyr/dts/common'
+     - '/home/glider/zephyrproject/zephyr/dts/vendor'
+     - '/home/glider/zephyrproject/zephyr/dts/rx'
+     - '/home/glider/zephyrproject/zephyr/dts/x86'
+     - '/home/glider/zephyrproject/zephyr/dts/xtensa'
+     - '/home/glider/zephyrproject/zephyr/dts/sparc'
+     - '/home/glider/zephyrproject/zephyr/dts/riscv'
+     - '/home/glider/zephyrproject/zephyr/dts/posix'
+     - '/home/glider/zephyrproject/zephyr/dts/arm64'
+     - '/home/glider/zephyrproject/zephyr/dts/arm'
+     - '/home/glider/zephyrproject/zephyr/dts/arc'
+     - '/home/glider/zephyrproject/zephyr/dts'
+    user-files:
+     - '/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT/boards/rpi_pico.overlay'
+  kconfig:
+    files:
+     - '/home/glider/zephyrproject/zephyr/boards/raspberrypi/rpi_pico/rpi_pico_defconfig'
+     - '/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT/prj.conf'
+    user-files:
+     - '/home/glider/zephyrproject/SMaRT_eDNA_v0/SMaRT/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/opt/zephyr-sdk-0.17.4'
+  zephyr:
+    version: '4.2.0'
+    zephyr-base: '/home/glider/zephyrproject/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/glider/zephyrproject/.venv/bin/west build -b rpi_pico . -p always'
+  topdir: '/home/glider/zephyrproject'
+  version: '1.5.0'
