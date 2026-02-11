@@ -1,0 +1,9 @@
+Id	Description	Qty	Unit	Designators
+1	Cable, 2 x 0.25 mm²	0.2	m	A315916
+2	Cable, 7 x 0.25 mm²	0.6	m	A314908, A315915, P312623
+3	Connector, 214755-1081, male, 7 pins	1		Internal Molex Male
+4	Connector, 214758-1082, female, 7 pins	1		Internal Molex Female
+5	Connector, 2262061084, male, 7 pins	1		J1A
+6	Connector, 70107-5002, male, 2 pins	1		M2 Leak Detect
+7	Connector, TCBH7FSS, Mini Subconn, 7 pins	1		Slocum Bulkhead
+8	Connector, TCBH7FSS, Mini Subconn, 8 pins	1		EK80 Bulkhead

@@ -2,32 +2,38 @@ connectors:
   EK80 Bulkhead:
     type: TCBH7FSS
     subtype: Mini Subconn
-    pinlabels: [1,2,3,4,5,6,7,8]
+    pincount: 8
+    
 
   Slocum Bulkhead:
     type: TCBH7FSS
     subtype: Mini Subconn
-    pinlabels: [1,2,3,4,5,6,7]
+    pincount: 7
+    
   
   Internal Molex Female:
     type: 214758-1082
     subtype: female
-    pinlabels: [1,2,3,4,5,6,7]
+    pincount: 7
+    
 
   Internal Molex Male:
     type: 214755-1081
     subtype: male
-    pinlabels: [1,2,3,4,5,6,7]    
- 
-   M2 Leak Detect:
+    pincount: 7        
+        
+  
+  M2 Leak Detect:
     type: 70107-5002
     subtype: male
-    pinlabels: [1,2] 
-   
-   J1A:
+    pincount: 2
+    
+  
+  J1A:
     type: 2262061084
     subtype: male
-    pinlabels: [1,2,3,4,5,6,7]    
+    pincount: 7        
+        
   
   
 
@@ -35,7 +41,7 @@ cables:
   P312623:
     gauge: 0.25 mm2
     length: 0.2
-    colors: [BK,WT,RD,GN,OR,BL,WT/BK]
+    colors: [BK,WH,RD,GN,OG,BU,WHBK]
     wirecount: 7
     shield: false
     
@@ -49,14 +55,14 @@ cables:
   A315916:
     gauge: 0.25 mm2
     length: 0.2
-    colors: [BK,WT]
+    colors: [BK,WH]
     wirecount: 2
     shield: false
 
   A315915:
     gauge: 0.25 mm2
     length: 0.2
-    colors: [BN,YL,GN,BL,BK,RD,WT]
+    colors: [BN,YE,GN,BU,BK,RD,WH]
     wirecount: 7
     shield: false    
   
