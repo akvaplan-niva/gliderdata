@@ -1,0 +1,84 @@
+connectors:
+  EK80 Bulkhead:
+    type: TCBH7FSS
+    subtype: Mini Subconn
+    pinlabels: [1,2,3,4,5,6,7,8]
+
+  Slocum Bulkhead:
+    type: TCBH7FSS
+    subtype: Mini Subconn
+    pinlabels: [1,2,3,4,5,6,7]
+  
+  Internal Molex Female:
+    type: 214758-1082
+    subtype: female
+    pinlabels: [1,2,3,4,5,6,7]
+
+  Internal Molex Male:
+    type: 214755-1081
+    subtype: male
+    pinlabels: [1,2,3,4,5,6,7]    
+ 
+   M2 Leak Detect:
+    type: 70107-5002
+    subtype: male
+    pinlabels: [1,2] 
+   
+   J1A:
+    type: 2262061084
+    subtype: male
+    pinlabels: [1,2,3,4,5,6,7]    
+  
+  
+
+cables:
+  P312623:
+    gauge: 0.25 mm2
+    length: 0.2
+    colors: [BK,WT,RD,GN,OR,BL,WT/BK]
+    wirecount: 7
+    shield: false
+    
+  A314908:
+    gauge: 0.25 mm2
+    length: 0.2
+    colors: [BN,BN,BN,BN,BN,BN,BN]
+    wirecount: 7
+    shield: false
+
+  A315916:
+    gauge: 0.25 mm2
+    length: 0.2
+    colors: [BK,WT]
+    wirecount: 2
+    shield: false
+
+  A315915:
+    gauge: 0.25 mm2
+    length: 0.2
+    colors: [BN,YL,GN,BL,BK,RD,WT]
+    wirecount: 7
+    shield: false    
+  
+ 
+    
+connections:
+  -
+    - EK80 Bulkhead: [1,2,3,4,5,6,7]
+    - P312623: [1,2,3,4,5,6,7]
+    - Slocum Bulkhead: [1,2,3,4,5,6,7]
+
+  -
+    - Slocum Bulkhead: [1,2,3,4,5,6,7]
+    - A314908: [1,2,3,4,5,6,7]
+    - Internal Molex Female: [1,2,3,4,5,6,7]
+    
+  -
+    - Internal Molex Male: [5,7]
+    - A315916: [1,2]
+    - M2 Leak Detect: [1,2]
+
+  -
+    - Internal Molex Male: [1,2,3,4,5,6]
+    - A315915: [1,2,3,4,5,6]
+    - J1A: [1,2,3,4,5,6]    
