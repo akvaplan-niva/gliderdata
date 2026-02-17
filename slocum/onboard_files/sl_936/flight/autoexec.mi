@@ -7,9 +7,10 @@
 # Changed to rechargeable battery 24/10/2025, EA
 # Swapped pump to deep pump, changed name 14/1/2026, EA
 # Swapped back to shallow, 16/1/2026, EA
+# 16-02-2026  using UiB deep pump (SN 560) EAB
 
 
-name slo_936
+name sl_936
 
 # SERIAL NUMBER RECORD						
 
@@ -53,9 +54,9 @@ name slo_936
 
 #INSTALLED DEVICES						
 
-installed buoyancy_pump
+#installed buoyancy_pump
 #installed de_pump
-#installed hd_pump
+installed hd_pump
 installed gps
 installed attitude_rev
 installed ocean_pressure
@@ -78,10 +79,10 @@ installed thruster
 
 # Depth Ratings
 # Max working depth: 51 for 50m glider, 102 for 100m, 206 for 200m, 360 for 350m, 1050 for 1000m
-  sensor: F_MAX_WORKING_DEPTH(m)		206
+  sensor: F_MAX_WORKING_DEPTH(m)		1050
 
 # Crush Depth: 225 for 50m, 100m, 200m, and 1200 for 1000m
-  sensor: F_CRUSH_DEPTH(m)			225   
+  sensor: F_CRUSH_DEPTH(m)			1200   
 					
 # UNCOMMENT THIS WHEN FLYING A DEEP GLIDER IN SHALLOW WATER
 # Reduce this so sensor_processing doesn't think that our dive is a hover!
@@ -146,8 +147,17 @@ installed thruster
 								# change to 2 for 200m glider, 5 for 100m glider, 7 for 50m glider
 
 # Oil volume (deep pump only) SN 920
-  sensor: f_de_oil_vol_pot_voltage_min(volts)	0.769		# raw AD voltage of fully retracted pot
-  sensor: f_de_oil_vol_pot_voltage_max(volts) 	1.985		# raw AD voltage of fully extended pot
+  # sensor: f_de_oil_vol_pot_voltage_min(volts)	0.769		# raw AD voltage of fully retracted pot
+  # sensor: f_de_oil_vol_pot_voltage_max(volts) 	1.985		# raw AD voltage of fully extended pot
+  # sensor: f_de_oil_vol_in_system(cc)            960             # volume of internal oil reservoir
+  # sensor: f_de_oil_vol_safety_max(cc)           460.0           # shouldn't go beyond this
+  # sensor: f_de_oil_vol_deadz_width(cc)          40.0            # to give 40cc deadband for f_de_oil_vol_db_frac_dz=1
+  # sensor: f_de_oil_vol_db_frac_dz(nodim)         1.0            # deadband as fraction of dead zone
+
+#### 1km pump SN 560 ####
+# Oil volume (deep pump only)
+  sensor: f_de_oil_vol_pot_voltage_min(volts)	0.912		# raw AD voltage of fully retracted pot
+  sensor: f_de_oil_vol_pot_voltage_max(volts) 	2.0		# raw AD voltage of fully extended pot
   sensor: f_de_oil_vol_in_system(cc)            960             # volume of internal oil reservoir
   sensor: f_de_oil_vol_safety_max(cc)           460.0           # shouldn't go beyond this
   sensor: f_de_oil_vol_deadz_width(cc)          40.0            # to give 40cc deadband for f_de_oil_vol_db_frac_dz=1
@@ -176,9 +186,9 @@ installed thruster
 
 ###Buoyancy Pump (Shallow 200m) SN 224
 
-  sensor: f_battpos_safety_max(inches)		1.1		# in, damage to glider(200m Lithium G-1405-L Hulls)
-  sensor: f_battpos_cal_m(inches/Volt)		2.814		# slope
-  sensor: f_battpos_cal_b(inches)		-1.758 		# y-intercept(200m Lithium G-1405-L HullS)
+#  sensor: f_battpos_safety_max(inches)		1.1		# in, damage to glider(200m Lithium G-1405-L Hulls)
+#  sensor: f_battpos_cal_m(inches/Volt)		2.814		# slope
+#  sensor: f_battpos_cal_b(inches)		-1.758 		# y-intercept(200m Lithium G-1405-L HullS)
 
 # sensor: f_battpos_safety_max(inches)		1.3		# in, damage to glider(200m Alkaline G-1405-L Hulls)
 # sensor: f_battpos_cal_m(inches/Volt)		2.814		# slope
@@ -192,6 +202,11 @@ installed thruster
 # sensor: f_battpos_safety_max(inches)		1.3		# in, damage to glider(1000m Alkaline G-1405-L Hulls)
 # sensor: f_battpos_cal_m(inches/Volt)		2.212		# slope
 # sensor: f_battpos_cal_b(inches)		-1.941		# y-intercept(1000m Alkaline G-1405-L Hulls)
+
+#### 1km pump SN 560 ####
+ sensor: f_battpos_safety_max(inches)		1.1		# in, damage to glider(1000m Lithium G-1405-L Hulls)
+ sensor: f_battpos_cal_m(inches/Volt)		2.592		# slope
+ sensor: f_battpos_cal_b(inches)		-1.773 		# y-intercept(1000m Lithium G-1405-L Hulls)
 
 
 # vacuum

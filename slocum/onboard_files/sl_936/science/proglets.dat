@@ -10,7 +10,6 @@
 # FL2SLC                SN 6826
 # Optode                SN 956
 # Jasco Observer        SN OBS-1002
-#Changed UVP6 proglets for tests
 #------------------------------------------------------------------------
 # RBR logger CTD sensor, baud rate 9600
 #
@@ -64,10 +63,10 @@
 # NOTE: This proglet requires the following input sensor (put in autoexec.mi):
 #       u_oxy4_slow_surface_mode(bool) 1 (default for 4330F), 0 for 4841 model
 #
- proglet = oxy4
-     uart       = J1         # U4Soem Pins T-2,R-3 
-     bit        = 2          # 8.8v
-     start_snsr = c_oxy4_on(sec)
+# proglet = oxy4
+#     uart       = J1         # U4Soem Pins T-2,R-3 
+#     bit        = 2          # 8.8v
+#     start_snsr = c_oxy4_on(sec)
 #------------------------------------------------------------------------
 # Jasco Observer Hydrophone sensor, baud rate 38400
 #
@@ -79,13 +78,13 @@
 #------------------------------------------------------------------------
 # SIMRAD WBT EK80 echosounder, Wide Band Transceiver EK80, baud rate 38400
 #
-# proglet = ek80
-#    uart       = j6         # connector
-#    bit        = 1          # power control for sensor, 15v regulated
-#    start_snsr = c_ek80_on(sec)
+ proglet = ek80
+    uart       = j6         # connector
+    bit        = 1          # power control for sensor, 15v regulated
+    start_snsr = c_ek80_on(sec)
 #
 #------------------------------------------------------------------------
- proglet = extctl
-     uart       = J5         # U4Soem Pins T-2,R-3/ J5 for Smart Cable, J1 for Optode tests
-	 bit        = 1			 # for optode tests, remove for normal operation
-	 start_snsr = c_extctl_on(sec)
+# proglet = extctl
+#     uart       = J5         # U4Soem Pins T-2,R-3/ J5 for Smart Cable, J1 for Optode tests
+#	 bit        = 1			 # for optode tests, remove for normal operation
+#	 start_snsr = c_extctl_on(sec)
