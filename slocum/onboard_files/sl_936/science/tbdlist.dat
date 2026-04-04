@@ -1,24 +1,57 @@
 # A small subset of a ebd file intended to be transmitted in real time.
-#EAB 25052025
-# only send CTD, DO, WL 24 sec, time, generic for UVP6
 #
+# All the arguments related to a given sensor needs to be placed
+# on a single line.  The name of the sensor is required, whitespace
+# delimited optional arguments may follow: (The [] means argument is
+# optional)
+#
+# <sensor_name> [<interval>] [<state>] [<halfyos>] [<yo_duty_cycle>]
+#
+#   <sensor_name> specifies that the sensor be stored in the *.sbd file
+#
+#                  Default    sensor value is only stored when....
+#
+#     <interval>       0      There have been this many secs since
+#                             the last value was stored.  0 means
+#                             store every value.
+#
+#     <state>         15      A code representing what the glider
+#                             is doing: dive(1)/hover(2)/climb(4)/surface(8)
+#                             Data only stored when glider is doing
+#                             what is specified. 15 is always store.
+#                             See doco/how-to-operate/controlling-contents-of-Xbd-file.txt for more info.
+#
+#     <halfyos>       -1      For this many dive/climbs in this
+#                             segment, e.g. since last surfacing.
+#                             -1 means stored for all dive/climbs
+#                             See doco/how-to-operate/controlling-contents-of-Xbd-file.txt for more info.
+#
+#    <yo_duty_cycle>  -1      Only stores data every n"th" yo in this
+#                             segment, i.e. would cause data from
+#                             every 10th dive&climb to be stored.
+#                             <= 1 means every dive&climb.
+#
+# Because the options are positional, if you want to specify
+# <halfyos> you must specify <state> and <interval>, etc.
+#
+# Any omitted arguments take on default values.
+
+
 SCI_M_PRESENT_TIME
 SCI_M_PRESENT_SECS_INTO_MISSION
-SCI_WATER_COND 24
-SCI_WATER_TEMP 24
-SCI_WATER_PRESSURE 24
-sci_generic_c
-sci_generic_d
-#sci_flbbcd_chlor_units
-#sci_flbbcd_bb_units
-#sci_flbbcd_cdom_units
-sci_flbbcd_chlor_sig 24
-sci_flbbcd_bb_sig 24
-sci_flbbcd_cdom_sig 24
+#CTD
+sci_rbrctd_salinity_00 20
+sci_rbrctd_temperature_00 20
+sci_rbrctd_depth_00 20
+#FLBBCD
+sci_flbbcd_chlor_units 60
+sci_flbbcd_bb_units 60
+sci_flbbcd_cdom_units 60
 # sci_flbbcd_chlor_ref
 # sci_flbbcd_bb_ref
 # sci_flbbcd_cdom_ref
 # sci_flbbcd_therm
+#FL2URRH
 # sci_fl2UrRh_uran_units
 # sci_fl2UrRh_rhod_units
 # sci_fl2UrRh_uran_sig
@@ -26,6 +59,14 @@ sci_flbbcd_cdom_sig 24
 # sci_fl2UrRh_uran_ref
 # sci_fl2UrRh_rhod_ref
 # sci_fl2UrRh_temp
-SCI_OXY4_OXYGEN 24
+#UVP6 and EK80
+#sci_generic_b 600
+#sci_generic_c 600
+#sci_generic_d 600
+#sci_ek80_file_offset
+#sci_ek80_data_received_timestamp
+
+#Oxygen
+SCI_OXY4_OXYGEN 60
 # SCI_OXY4_SATURATION
 # SCI_OXY4_TEMP

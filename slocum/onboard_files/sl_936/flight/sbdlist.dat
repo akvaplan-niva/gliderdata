@@ -1,57 +1,64 @@
 # Written by load_data.c::save_sensors_to_file()
-# EAB removed a bunch of sensors 
+# 26-11-2025 EAB
+# Snabeluer 27-02-2026, EAB
+
+### mandatory time information at full resolution
 m_present_secs_into_mission
-m_present_time  
-m_ballast_pumped 60
-c_ballast_pumped 60
-m_gps_lat 300
-m_gps_lon 300                 
-m_heading    60
-m_pitch  60
-m_battery  60
-m_depth    16
-m_altitude     6# tbdlist.dat
-# A small subset of a dbd file intended to be transmitted in real time.
-#
-# 2009-10-06 fnj@omegatech.hatchescreek.com  Initial. DRH: only send CTD, DO, WL 24 sec, time, generic for UVP6
-#
-SCI_M_PRESENT_TIME
-SCI_M_PRESENT_SECS_INTO_MISSION
-SCI_WATER_COND 24
-SCI_WATER_TEMP 24
-SCI_WATER_PRESSURE 24
-sci_generic_c
-#sci_flbbcd_chlor_units
-#sci_flbbcd_bb_units
-#sci_flbbcd_cdom_units
-sci_flbbcd_chlor_sig 24
-sci_flbbcd_bb_sig 24
-sci_flbbcd_cdom_sig 24
-# sci_flbbcd_chlor_ref
-# sci_flbbcd_bb_ref
-# sci_flbbcd_cdom_ref
-# sci_flbbcd_therm
-# sci_fl2UrRh_uran_units
-# sci_fl2UrRh_rhod_units
-# sci_fl2UrRh_uran_sig
-# sci_fl2UrRh_rhod_sig
-# sci_fl2UrRh_uran_ref
-# sci_fl2UrRh_rhod_ref
-# sci_fl2UrRh_temp
-SCI_OXY4_OXYGEN 24
-# SCI_OXY4_SATURATION
-# SCI_OXY4_TEMP
-0
-c_thruster_on 600
-m_thruster_power 600
-c_climb_bpump 300
-c_dive_bpump 300
-m_leakdetect_voltage 1800
-m_leakdetect_voltage_forward 1800
+m_present_time
+
+######### vertical navigation information
+m_depth 30
+m_altitude 60
+m_speed 60
+
+######### horizontal navigation information
+c_wpt_lon 3600
+c_wpt_lat 3600
+c_heading 3600
+
+### observed GPS position
+m_gps_lon 3600
+m_gps_lat 3600
+
+
+### estimated currents
+m_final_water_vx 3600
+m_final_water_vy 3600
+
+### Lead detects
+m_leakdetect_voltage  120
+m_leakdetect_voltage_forward  120
+m_leakdetect_voltage_science  120
 m_digifin_leakdetect_reading 1800
-m_coulomb_amphr_total 1800
-m_coulomb_current 180
-m_water_depth 		60
-m_vacuum	   1800
-m_veh_temp  1800
-c_extctl_on		180
+
+### observed pump/piston volume
+#m_ballast_pumped  300
+#c_ballast_pumped 300
+    
+m_de_oil_vol    120
+c_de_oil_vol    120
+                
+m_heading 300
+m_pitch  300
+m_roll   600
+
+### instantaneous battery voltage
+m_battery  600
+
+#observed battery position
+m_battpos  300
+
+### integrated current flow
+m_coulomb_amphr_total 3600 
+m_coulomb_current 1800
+
+#thruster
+#m_thruster_current 600
+c_thruster_on 600
+#m_thruster_voltage 600
+m_thruster_power 600
+
+#sensor on
+#c_extctl_on  1800
+c_ek80_on    600
+

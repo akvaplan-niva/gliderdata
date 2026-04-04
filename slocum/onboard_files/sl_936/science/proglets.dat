@@ -33,11 +33,11 @@
 #
 # For simulator, set u_wetlabs_sim_num_eng_units(nodim) to 3 in autoexec.mi
 #
- proglet = flbbcd
-     uart       = J3          # U4Soem Pins T-2,R-4  (we only use receive)
-     bit        = 0          # power, battery
-     start_snsr = c_flbbcd_on(sec)
-     simulator = wetlabs_sim
+# proglet = flbbcd
+#     uart       = J3          # U4Soem Pins T-2,R-4  (we only use receive)
+#     bit        = 0          # power, battery
+#     start_snsr = c_flbbcd_on(sec)
+#     simulator = wetlabs_sim
 #
 #------------------------------------------------------------------------
 # Wet Labs fl2UrRh Uranine and Rhodamine sensor, baud rate 19200
