@@ -20,10 +20,10 @@
      start_snsr = c_profile_on(sec)
 #
 #------------------------------------------------------------------------
- proglet = extctl
-     uart       = J4         # U4Soem Pins T-2,R-3, J4 normally and J1 for external tests
-	 bit        = 0			 # 0 normally, 2 for external tests
-     start_snsr = c_extctl_on(sec)
+# proglet = extctl
+#     uart       = J4         # U4Soem Pins T-2,R-3, J4 normally and J1 for external tests
+#	 bit        = 0			 # 0 normally, 2 for external tests
+#     start_snsr = c_extctl_on(sec)
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
 # Wet Labs flbbcd fluorometer, scattering meter, and cdom sensor, baud rate 19200
@@ -49,8 +49,8 @@
 #------------------------------------------------------------------------
 # SIMRAD WBT EK80 echosounder, Wide Band Transceiver EK80, baud rate 38400
 #
-# proglet = ek80
-#    uart       = j6         # connector
-#    bit        = 1          # power control for sensor, 15v regulated
-#    start_snsr = c_ek80_on(sec)
+ proglet = ek80
+    uart       = j6         # connector
+    bit        = 1          # power control for sensor, 15v regulated
+    start_snsr = c_ek80_on(sec)
 #------------------------------------------------------------------------
